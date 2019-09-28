@@ -18,10 +18,10 @@ $(function () {
     console.log(amenIds);
   });
 
-    $.get('http://0.0.0.0:5001/api/v1/status/', function(data){
-	$('DIV#api_status').toggle(data.status === 'OK', 'available');	
-    }).fail(function() {
-	console.error("CONNECTION REFUSED");
-	$('DIV#api_status').removeClass('available');
-    });
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
+    $('DIV#api_status').toggle(data.status === 'OK', 'available');
+  }).fail(function () {
+    console.error('CONNECTION REFUSED');
+    $('DIV#api_status').removeClass('available');
+  });
 });
