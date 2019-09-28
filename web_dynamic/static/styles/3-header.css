@@ -11,4 +11,20 @@ header {
 	height: 70px;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+#api_status {
+    width: 40px;
+    border-radius: 100%;
+    height: 40px;
+    background-color: #cccccc;
+    margin-right: 30px;
+}
+
+#api_status.available {
+    background-color: #ff545f;
 }
