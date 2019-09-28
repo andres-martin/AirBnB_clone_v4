@@ -11,7 +11,7 @@ $(function () {
     const values = Object.values(amenIds);
     // $('.amenities h4').text(values.join());
     if (values.length > 0) {
-      $('.amenities h4').text(values.join());
+      $('.amenities h4').text(values.join(', '));
     } else {
       $('.amenities h4').html('&nbsp;');
     }
