@@ -78,6 +78,11 @@
   	text-overflow: ellipsis;
 }
 
+.container .filters .locations h4 {
+ 	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
 
 .container .filters .popover {
 	max-height: 300px;
