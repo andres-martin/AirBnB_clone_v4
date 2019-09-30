@@ -1,21 +1,21 @@
 // Listen for changes on each INPUT checkbox tag
 const amenIds = {};
-let fillPlace = function(data){
-    let template = Handlebars.compile($('#place-template').html());
-    data.forEach(function(place){
-	$('SECTION.places').append(template({place: place}));
-    })
-}
+const fillPlace = function (data) {
+  const template = Handlebars.compile($('#place-template').html());
+  data.forEach(function (place) {
+    $('SECTION.places').append(template({ place: place }));
+  });
+};
 
-let postSearch = function(data = {}){
-    	$.ajax({
-	    type: 'POST',
-	    url: 'http://0.0.0.0:5001/api/v1/places_search/',
-	    data: JSON.stringify(data),
-	    contentType: 'application/json',
-	    success: fillPlace
-	})
-}
+const postSearch = function (data = {}) {
+  $.ajax({
+    type: 'POST',
+    url: 'http://0.0.0.0:5001/api/v1/places_search/',
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    success: fillPlace
+  });
+};
 
 $(function () {
   $('.popover li input[type=checkbox]').on('change', function () {
@@ -32,15 +32,15 @@ $(function () {
     }
   });
 
-    $.get('http://0.0.0.0:5001/api/v1/status/', function(data){
-	$('DIV#api_status').toggle(data.status === 'OK', 'available');
-	postSearch();
-    }).fail(function() {
-	console.error("CONNECTION REFUSED");
-	$('DIV#api_status').removeClass('available');
-    });
-    $('button').on('click', function(){
-	$('SECTION.places > article').remove();
-	postSearch({amenities: Object.keys(amenIds)});
-    })
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
+    $('DIV#api_status').toggle(data.status === 'OK', 'available');
+    postSearch();
+  }).fail(function () {
+    console.error('CONNECTION REFUSED');
+    $('DIV#api_status').removeClass('available');
+  });
+  $('button').on('click', function () {
+    $('SECTION.places > article').remove();
+    postSearch({ amenities: Object.keys(amenIds) });
+  });
 });
