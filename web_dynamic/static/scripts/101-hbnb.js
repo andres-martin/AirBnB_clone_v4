@@ -20,31 +20,28 @@ const postSearch = function (data = {}) {
   });
 };
 
-const reviewsSearch =  function(){
-that = this;
-    if ($(this).hasClass('active'))
-    {
-	$(this).removeClass('active');
-	$(this).next().remove()
-    }
-    else{
-	$(this).addClass('active');
-	$.ajax({
-	    type: 'GET',
-	    url: `http://0.0.0.0:5001/api/v1/places/${$(this).attr('id')}/reviews`,
-	    contentType: 'application/json',
-	    success: function(data)
-	    {
-		const reviewContainerTemplate = Handlebars.compile($('#review-container-template').html());
-		const template = Handlebars.compile($('#review-template').html());
-		$(that).after(reviewContainerTemplate({ reviews: data }))
-		data.forEach(function(review){
-		    $(that).next().append(template({review: review}));
-		})
-	    }
-	});
-    }
-}
+const reviewsSearch = function () {
+  const that = this;
+  if ($(this).hasClass('active')) {
+    $(this).removeClass('active');
+    $(this).next().remove();
+  } else {
+    $(this).addClass('active');
+    $.ajax({
+      type: 'GET',
+      url: `http://0.0.0.0:5001/api/v1/places/${$(this).attr('id')}/reviews`,
+      contentType: 'application/json',
+      success: function (data) {
+        const reviewContainerTemplate = Handlebars.compile($('#review-container-template').html());
+        const template = Handlebars.compile($('#review-template').html());
+        $(that).after(reviewContainerTemplate({ reviews: data }));
+        data.forEach(function (review) {
+          $(that).next().append(template({ review: review }));
+        });
+      }
+    });
+  }
+};
 const renderLocations = function () {
   const values = Object.values(citiesIds);
   const locations = values.concat(Object.values(statesIds));
@@ -101,6 +98,5 @@ $(function () {
     postSearch({ amenities: Object.keys(amenIds), states: Object.keys(statesIds), cities: Object.keys(citiesIds) });
   });
 
-    $('section.places').on('click','span.show-review', reviewsSearch);
-  
+  $('section.places').on('click', 'span.show-review', reviewsSearch);
 });
