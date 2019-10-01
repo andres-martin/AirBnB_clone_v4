@@ -116,14 +116,15 @@
 	    <div class="description">
 	      <p>{{{ place.description }}}</p>
 	    </div>
-	    <h2>Reviews</h2><span id= "{{ place.id }}" class="show-review">Show</span>
+	    <span id= "{{ place.id }}" class="show-review">Show</span>
+	    <br/>
 	  </article>
 	</script>
 
 	<script id="review-template" type="text/x-handlebars-template">
 	      <li>
-		<h3>{{user.name}}</h3>
-		<p>{{review.text}}</p>
+		<h3>{{user.first_name}}  {{user.last_name}}</h3>
+		<p>{{{review.text}}}</p>
 	      </li>	    	  
 	</script>
 
