@@ -98,3 +98,12 @@
 		line-height: 42px;
 	}
 }
+.reviews li {
+    list-style: none;
+}
+
+.show-review
+{
+    color: red;
+    cursor: pointer;
+}
