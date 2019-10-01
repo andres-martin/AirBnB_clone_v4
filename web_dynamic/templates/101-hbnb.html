@@ -22,7 +22,7 @@
          <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.css') }}?{{cache_id}}">
          <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
-	 <script type="text/javascript" src="{{ url_for('static', filename='scripts/100-hbnb.js') }}?{{cache_id}}"></script>
+	 <script type="text/javascript" src="{{ url_for('static', filename='scripts/101-hbnb.js') }}?{{cache_id}}"></script>
   </head>
   <!-- **********************
        BODY
@@ -110,13 +110,29 @@
 		{{ place.number_bathrooms }} Bathroom
 	      </div>
 	    </div>
-		    <div class="user">
-		      <strong>Owner: </strong>
-		    </div>
-		    <div class="description">
-		      <p>{{{ place.description }}}</p>
-		    </div>
+	    <div class="user">
+	      <strong>Owner: </strong>
+	    </div>
+	    <div class="description">
+	      <p>{{{ place.description }}}</p>
+	    </div>
+	    <h2>Reviews</h2><span id= "{{ place.id }}" class="show-review">Show</span>
 	  </article>
+	</script>
+
+	<script id="review-template" type="text/x-handlebars-template">
+	      <li>
+		<h3>{{user.name}}</h3>
+		<p>{{review.text}}</p>
+	      </li>	    	  
+	</script>
+
+	<script id="review-container-template" type="text/x-handlebars-template">
+  	  <div class="reviews">
+	    <h2>{{reviews.length}} Reviews</h2>
+	    <ul>
+	    </ul>
+	  </div>
 	</script>
 	{% endraw %}
   </body>
