@@ -210,8 +210,15 @@ create: create [ARG] [PARAM 1] [PARAM 2] ...
 Uses [Travis-CI](https://travis-ci.org/) to run all tests on all commits to the
 github repo
 
-## Authors
 
+
+#### Dynamic Templatic
+This project uses Handlebars as template engine [handlebars](https://handlebarsjs.com/)
+
+
+## Authors
+* Andres Martin, [@andres-martin](https://github.com/mj31508)
+* Ferney Medina, [@Fermec28](https://github.com/Fermec28)
 * MJ Johnson, [@mj31508](https://github.com/mj31508)
 * David John Coleman II, [davidjohncoleman.com](http://www.davidjohncoleman.com/) | [@djohncoleman](https://twitter.com/djohncoleman)
 * Kimberly Wong, [kjowong](https://github.com/kjowong) | [@kjowong](https://twitter.com/kjowong) | [kjowong@gmail.com](kjowong@gmail.com)
