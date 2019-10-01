@@ -2,7 +2,6 @@
 const amenIds = {};
 const statesIds = {};
 const citiesIds = {};
-
 const fillPlace = function (data) {
   const template = Handlebars.compile($('#place-template').html());
   data.forEach(function (place) {
@@ -28,7 +27,7 @@ const reviewsSearch = function () {
     $(this).text('Show');
   } else {
     $(this).addClass('active');
-    $(this).text('Hide');  
+    $(this).text('Hide');
     $.ajax({
       type: 'GET',
       url: `http://0.0.0.0:5001/api/v1/places/${$(this).attr('id')}/reviews`,
@@ -36,17 +35,18 @@ const reviewsSearch = function () {
       success: function (data) {
         const reviewContainerTemplate = Handlebars.compile($('#review-container-template').html());
         const template = Handlebars.compile($('#review-template').html());
-          $(that).after(reviewContainerTemplate({ reviews: data }));
-	  for (let review of data) {
-	      jQuery.ajax({
-		  url: `http://0.0.0.0:5001/api/v1/users/${review.user_id}`,
-		  success: function (result) {
-		      user = result
-		  },
-		  async: false
-	      });
-              $(that).next().append(template({ review: review, user: user }));
-          }
+        $(that).after(reviewContainerTemplate({ reviews: data }));
+        for (const review of data) {
+          let user;
+          $.ajax({
+            url: `http://0.0.0.0:5001/api/v1/users/${review.user_id}`,
+            success: function (result) {
+              user = result;
+            },
+            async: false
+          });
+          $(that).next().append(template({ review: review, user: user }));
+        }
       }
     });
   }
